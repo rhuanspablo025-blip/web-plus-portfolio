@@ -38,7 +38,7 @@
   let elapsed = 0, last = 0, frame = 0, active = -1, paused = false, previousFocus;
   const duration = 42;
   function render() {
-    const index = scenes.findLastIndex(scene => elapsed >= scene.start);
+    const index = Math.max(0, scenes.findLastIndex(scene => elapsed >= scene.start));
     if(active !== index) {
       active = index;
       sections.forEach((el,i)=>{el.classList.toggle('active',i===index);el.inert=i!==index;el.setAttribute('aria-hidden',String(i!==index));});
@@ -50,7 +50,7 @@
   }
   function tick(now) {
     if(!dialog.open) return;
-    if(!paused && !document.hidden) elapsed += (now-last)/1000;
+    if(!paused && !document.hidden) elapsed += Math.max(0, now-last)/1000;
     last=now;
     if(elapsed>=duration){closeFilm();return;}
     render(); frame=requestAnimationFrame(tick);
