@@ -29,3 +29,5 @@ main .hero-stage{translate:none}
 }
 @media(hover:none){main .service-card:hover,main .work-card:hover,main .person-card:hover{transform:none}.button-gold:hover:before{transform:translateX(-100%)}main .service-card:hover .service-glyph{transform:none}}
 @media(prefers-reduced-motion:reduce){main .hero-stage{translate:none}main .brand-plate img,main .work-card .atlas-visual,main .work-card .crm-visual,main .person-card .person-portrait>span:first-child{transform:none}.tap-wave{display:none}.button-gold:before{display:none}.nav-links a{translate:none}main .service-card:hover,main .work-card:hover,main .person-card:hover,main .profile-card:hover{transform:none}main a:hover .round-link,main a:focus-visible .round-link,main .service-card:hover .service-glyph,.press-feedback:active{transform:none!important}.about-rule:after{transform:scaleX(1)}}
+
+.brand-star{display:inline-block;width:1em;height:1em;vertical-align:-.1em;overflow:visible}
