@@ -2,22 +2,22 @@
   const actions = document.querySelector('.hero-actions');
   if (!actions || typeof HTMLDialogElement === 'undefined') return;
 
-  const duration = 34;
+  const duration = 48;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const asset = file => 'assets/ident/' + file;
   const seenKey = 'webplus-studio-film-2';
   const beats = [
     { start: 0, art: 0, label: 'Estúdio digital · Minas Gerais', title: 'Ideias em<br><em>movimento.</em>', description: '' },
-    { start: 7, art: 1, label: 'Produto próprio', title: 'Atlas<em>Fit.</em>', description: 'Fichas de treino e acompanhamento de alunos para professores e academias.' },
-    { start: 15, art: 2, label: 'Ferramenta do estúdio', title: 'Comercial<br><em>Web Plus.</em>', description: 'Da primeira conversa ao acompanhamento de cada projeto.' },
-    { start: 22.5, art: 0, label: 'Sócios da Web Plus', title: 'Rhuan <em>&</em> Tiago', description: '', team: true },
-    { start: 28.5, art: 0, label: '', title: '', description: 'Sites, automações e produtos digitais.', signature: true }
+    { start: 10, art: 1, label: 'Produto próprio', title: 'Atlas<em>Fit.</em>', description: 'Fichas de treino e acompanhamento de alunos para professores e academias.' },
+    { start: 21, art: 2, label: 'Ferramenta do estúdio', title: 'Comercial<br><em>Web Plus.</em>', description: 'Da primeira conversa ao acompanhamento de cada projeto.' },
+    { start: 32, art: 0, label: 'Sócios da Web Plus', title: 'Rhuan <em>&</em> Tiago', description: '', team: true },
+    { start: 41, art: 0, label: '', title: '', description: 'Sites, automações e produtos digitais.', signature: true }
   ];
 
   const replay = document.createElement('button');
   replay.type = 'button';
   replay.className = 'experience-replay';
-  replay.innerHTML = '<span class="play-symbol" aria-hidden="true"></span>Assistir à abertura <small>34 segundos</small>';
+  replay.innerHTML = '<span class="play-symbol" aria-hidden="true"></span>Rever experiência';
   actions.after(replay);
 
   const dialog = document.createElement('dialog');
@@ -35,18 +35,11 @@
       <video muted playsinline preload="none" disablepictureinpicture></video>
     </div>
     <div class="ident-type" aria-live="off"></div>
-    <div class="ident-controls">
-      <button type="button" aria-label="Pausar apresentação" aria-pressed="false"><span class="ident-icon" aria-hidden="true"></span></button>
-      <div class="ident-track" aria-hidden="true"><i></i></div>
-      <span class="ident-clock" aria-hidden="true">00:34</span>
-    </div>`;
+    `;
   document.body.append(dialog);
 
   const captions = dialog.querySelector('.ident-type');
   const video = dialog.querySelector('video');
-  const pauseButton = dialog.querySelector('button');
-  const clock = dialog.querySelector('.ident-clock');
-  const bar = dialog.querySelector('.ident-track i');
   const topMark = dialog.querySelector('.ident-logotype');
   const stills = [...dialog.querySelectorAll('.ident-sculpture img')];
   const rail = dialog.querySelector('.ident-rail');
@@ -89,7 +82,6 @@
   let paused = false;
   let active = -1;
   let lastPaint = -1;
-  let lastSecond = -1;
   let runningVideo = false;
   let pendingSeek = false;
   let restoreFocus;
@@ -164,12 +156,6 @@
     copy[index].style.opacity=String(enter*exit);
     copy[index].style.translate=`0 ${(1-enter)*15-(1-exit)*7}px`;
     topMark.style.opacity=beat.signature ? '0' : '1';
-    bar.style.transform=`scaleX(${t/duration})`;
-    const second=Math.ceil(duration-t);
-    if(second!==lastSecond) {
-      clock.textContent=`00:${String(second).padStart(2,'0')}`;
-      lastSecond=second;
-    }
     // Never hold the visitor at a loading screen. Show the rendered still whenever
     // autoplay, a slow connection, or a decoder prevents a synchronized frame.
     const showMovie = runningVideo && !pendingSeek && video.readyState>=2 && Math.abs(video.currentTime-t)<.45 && !reducedMotion.matches;
@@ -218,14 +204,6 @@
     if(!frame) frame=requestAnimationFrame(loop);
   }
 
-  function setPaused(value) {
-    suspend();
-    paused=value;
-    pauseButton.setAttribute('aria-pressed',String(paused));
-    pauseButton.setAttribute('aria-label',paused?'Continuar apresentação':'Pausar apresentação');
-    if(!paused) resume();
-  }
-
   video.addEventListener('playing',()=>{runningVideo=true;});
   video.addEventListener('waiting',()=>{runningVideo=false;});
   video.addEventListener('seeked',()=>{pendingSeek=false;});
@@ -236,14 +214,12 @@
   function openFilm() {
     if(dialog.open) return;
     restoreFocus=document.activeElement;
-    elapsed=0; baseline=0; active=-1; lastSecond=-1; lastPaint=-1; paused=false;
+    elapsed=0; baseline=0; active=-1; lastPaint=-1; paused=false;
     runningVideo=false; pendingSeek=false;
     for(const section of copy) {section.style.opacity='0';section.setAttribute('aria-hidden','true');}
     for(const img of stills) if(img.dataset.still && !img.hasAttribute('src')) img.src=img.dataset.still;
     dialog.showModal();
     document.documentElement.classList.add('ident-open');
-    pauseButton.setAttribute('aria-pressed','false');
-    pauseButton.setAttribute('aria-label','Pausar apresentação');
     resize();
     if(!reducedMotion.matches && !navigator.connection?.saveData) {
       if(!video.hasAttribute('src')) video.src=asset('studio.mp4');
@@ -253,8 +229,7 @@
     try { sessionStorage.setItem(seenKey,'1'); } catch {}
   }
 
-  pauseButton.addEventListener('click',()=>setPaused(!paused));
-  dialog.addEventListener('cancel',event=>{event.preventDefault();setPaused(!paused);});
+  dialog.addEventListener('cancel',event=>event.preventDefault());
   dialog.addEventListener('close',()=>{
     suspend();
     document.documentElement.classList.remove('ident-open');
