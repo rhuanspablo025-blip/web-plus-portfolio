@@ -15,7 +15,7 @@ Abra `index.html` no navegador ou sirva esta pasta com `python3 -m http.server 8
 
 ## Conteúdo a completar
 
-- Inserir canais oficiais de contato da Web Plus e de Tiago quando confirmados.
+- Confirmar se a Web Plus deseja acrescentar WhatsApp ou e-mail comercial aos links de Instagram já publicados.
 - Adicionar cases documentados, links autorizados, fotos dos sócios e resultados verificáveis.
 - Atualizar o estágio dos produtos conforme forem publicados.
 
