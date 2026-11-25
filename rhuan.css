@@ -1,0 +1,30 @@
+/* Individual profile: Rhuan Pablo */
+.rhuan-trajectory{background:#10273b;color:#fff}
+.rhuan-trajectory .section-kicker{border-color:#ffffff38;color:#a7b9c6}
+.rhuan-trajectory .section-title-row>p{color:#b9cad3}
+.rhuan-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #ffffff38}
+.rhuan-timeline article{padding:30px 30px 5px 0;min-width:0}
+.rhuan-timeline article+article{border-left:1px solid #ffffff38;padding-left:30px}
+.rhuan-timeline article>span,.rhuan-expertise-grid article>span,.rhuan-stack b,.rhuan-card-stack{font:800 10px/1.5 Manrope,Arial,sans-serif;letter-spacing:.12em}
+.rhuan-timeline article>span{color:var(--gold)}
+.rhuan-timeline h3{font-size:clamp(24px,2.4vw,34px);margin:22px 0 14px}
+.rhuan-timeline p{color:#c4d0d8;font-size:15px}
+.rhuan-expertise-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.rhuan-expertise-grid article{background:#fff;padding:32px;min-height:260px;display:flex;flex-direction:column}
+.rhuan-expertise-grid article>span{color:var(--gold-deep)}
+.rhuan-expertise-grid h3{font-size:clamp(24px,2.4vw,34px);margin:auto 0 14px}
+.rhuan-expertise-grid p{font-size:15px;color:#596a74}
+.rhuan-stack{margin-top:35px;display:flex;align-items:baseline;gap:35px;padding-top:22px;border-top:1px solid var(--line)}
+.rhuan-stack b{color:var(--gold-deep);flex:none}
+.rhuan-stack p{color:#52616d;font-size:15px}
+.rhuan-projects .profile-card{min-height:315px}
+.rhuan-projects .profile-card h3{line-height:1.16}
+.rhuan-card-stack{display:block;color:#7a8790;margin-top:20px;letter-spacing:.02em}
+.rhuan-portfolio-card{background:var(--night);color:#fff}
+.rhuan-portfolio-card p{color:#c1cdd4}
+.rhuan-portfolio-card a{color:var(--gold)}
+.rhuan-contact-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px}
+.rhuan-contact-links a{font-size:13px;color:#c2d0d8;border-bottom:1px solid #c2d0d8}
+.rhuan-contact-links a:hover{color:var(--gold)}
+@media(max-width:760px){.rhuan-timeline{grid-template-columns:1fr}.rhuan-timeline article{padding:25px 0!important}.rhuan-timeline article+article{border-left:0;border-top:1px solid #ffffff38}.rhuan-expertise-grid{grid-template-columns:1fr}.rhuan-expertise-grid article{min-height:220px}.rhuan-stack{display:block}.rhuan-stack p{margin-top:12px}.rhuan-projects .profile-card{min-height:280px}}
+@media(max-width:520px){.rhuan-projects .profile-card{min-height:260px}}
