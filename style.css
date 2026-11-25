@@ -18,3 +18,13 @@
 .stage-stamp strong .arrow{width:18px;height:18px;margin-left:4px}
 .stage-stamp strong .arrow:before{left:1px;bottom:2px}.stage-stamp strong .arrow:after{right:0;top:0}
 .crm-stats span{font-size:0}.crm-stats span:after{content:"/";font-size:14px}
+
+/* Retrato real de Rhuan na biografia e nos cartões da equipe. */
+.bio-art.photo-art{isolation:isolate;background:#11181c}
+.bio-art.photo-art:before{display:none}
+.bio-art.photo-art:after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,#0613219c 0%,transparent 32%,transparent 55%,#061321c9 100%);pointer-events:none}
+.bio-art.photo-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.bio-art.photo-art>span:first-child,.bio-art.photo-art p{position:relative;z-index:1;text-shadow:0 1px 12px #000}
+.person-portrait.person-photo{min-height:300px;background:#11181c}
+.person-portrait.person-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%}
+@media(max-width:760px){.person-portrait.person-photo{min-height:260px}.bio-art.photo-art img{object-position:center 40%}}
