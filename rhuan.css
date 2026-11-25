@@ -28,3 +28,7 @@
 .rhuan-contact-links a:hover{color:var(--gold)}
 @media(max-width:760px){.rhuan-timeline{grid-template-columns:1fr}.rhuan-timeline article{padding:25px 0!important}.rhuan-timeline article+article{border-left:0;border-top:1px solid #ffffff38}.rhuan-expertise-grid{grid-template-columns:1fr}.rhuan-expertise-grid article{min-height:220px}.rhuan-stack{display:block}.rhuan-stack p{margin-top:12px}.rhuan-projects .profile-card{min-height:280px}}
 @media(max-width:520px){.rhuan-projects .profile-card{min-height:260px}}
+
+/* Trajetória profissional atualizada */
+@media(min-width:761px){.rhuan-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.rhuan-timeline article:nth-child(odd){border-left:0;padding-left:0}.rhuan-timeline article:nth-child(even){border-left:1px solid #ffffff38;padding-left:30px}.rhuan-timeline article:nth-child(n+3){border-top:1px solid #ffffff38;padding-top:30px}}
+.rhuan-timeline h3 a:hover{color:var(--gold)}
